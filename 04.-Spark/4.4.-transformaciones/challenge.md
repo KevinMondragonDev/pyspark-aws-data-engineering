@@ -2,6 +2,11 @@
 
 > **Objetivo:** Dominar las transformaciones más usadas en el día a día de un Data Engineer: `select`, `filter`, `withColumn`, `alias`, `drop` y más.
 
+> ⚡ **Práctica con Big Data (Opcional):** Si quieres trabajar con un dataset real de **100,000 registros** en formato Parquet, puedes cargar el archivo pregenerado con:
+> ```python
+> df = spark.read.parquet("./datos/empleados.parquet")
+> ```
+
 ---
 
 ## Dataset de práctica

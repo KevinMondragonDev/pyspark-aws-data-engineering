@@ -2,6 +2,12 @@
 
 > **Objetivo:** Aprender a unir dos DataFrames usando diferentes tipos de join, igual que en SQL.
 
+> ⚡ **Práctica con Big Data (Opcional):** Si quieres trabajar con datasets reales de **100,000 registros** en formato Parquet, puedes cargar los archivos pregenerados con:
+> ```python
+> df_empleados = spark.read.parquet("./datos/empleados.parquet")
+> df_departamentos = spark.read.parquet("./datos/departamentos.parquet")
+> ```
+
 ---
 
 ## Datasets de práctica

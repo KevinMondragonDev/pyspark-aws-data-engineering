@@ -2,6 +2,11 @@
 
 > **Objetivo:** Crear DataFrames de distintas formas, explorar su esquema, y comprender cómo Spark organiza los datos en columnas tipadas.
 
+> ⚡ **Práctica con Big Data (Opcional):** Si quieres trabajar con un dataset real de **100,000 registros** en formato Parquet, puedes cargar el archivo pregenerado con:
+> ```python
+> df = spark.read.parquet("./datos/empleados.parquet")
+> ```
+
 ---
 
 ## ¿Qué es un DataFrame de Spark?

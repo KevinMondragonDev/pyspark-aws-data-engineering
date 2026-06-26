@@ -2,6 +2,12 @@
 
 > **Objetivo:** Conocer y usar las funciones predefinidas de Spark para manipular strings, fechas, números y estructuras de datos complejas.
 
+> ⚡ **Práctica con Big Data (Opcional):** Si quieres trabajar con datasets reales de **100,000 registros** en formato Parquet, puedes cargar los archivos pregenerados con:
+> ```python
+> df = spark.read.parquet("./datos/usuarios.parquet")
+> df_fechas = spark.read.parquet("./datos/fechas.parquet")
+> ```
+
 ---
 
 ## Importación

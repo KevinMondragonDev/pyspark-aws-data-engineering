@@ -2,6 +2,11 @@
 
 > **Objetivo:** Detectar, analizar y resolver datos nulos o faltantes en DataFrames de Spark, una de las tareas más frecuentes en Data Engineering.
 
+> ⚡ **Práctica con Big Data (Opcional):** Si quieres trabajar con un dataset real de **100,000 registros** en formato Parquet, puedes cargar el archivo pregenerado con:
+> ```python
+> df = spark.read.parquet("./datos/empleados_nulos.parquet")
+> ```
+
 ---
 
 ## ¿Por qué son tan importantes los nulos?

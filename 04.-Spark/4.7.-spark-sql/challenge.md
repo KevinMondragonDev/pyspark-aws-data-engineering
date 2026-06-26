@@ -2,6 +2,11 @@
 
 > **Objetivo:** Usar la sintaxis SQL estándar directamente sobre DataFrames de Spark mediante vistas temporales.
 
+> ⚡ **Práctica con Big Data (Opcional):** Si quieres trabajar con un dataset real de **100,000 registros** en formato Parquet, puedes cargar el archivo pregenerado con:
+> ```python
+> df = spark.read.parquet("./datos/empleados.parquet")
+> ```
+
 ---
 
 ## ¿Por qué Spark SQL?

@@ -22,6 +22,13 @@ Tu misión es construir un pipeline que:
 
 ## Paso 1 — Ingesta de Datos (SparkSession + DataFrames)
 
+> ⚡ **Práctica con Big Data (Opcional):** Si quieres construir tu pipeline utilizando los datasets a gran escala (**100,000 transacciones** y catálogo completo de productos) que hemos preparado en formato Parquet, puedes cargarlos con:
+> ```python
+> df_ventas = spark.read.parquet("./datos/ventas.parquet")
+> df_productos = spark.read.parquet("./datos/productos.parquet")
+> ```
+> *(Si usas esta opción, puedes saltarte la creación de DataFrames manuales a partir de listas).*
+
 ```python
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
