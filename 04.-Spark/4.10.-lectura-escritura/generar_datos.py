@@ -10,7 +10,7 @@ def main():
     print("Generando datos de ventas particionados grandes (50,000 filas)...")
     
     productos = ["Laptop", "Smartphone", "Monitor", "Teclado", "Mouse", "Auriculares", "Cargador", "Tablet"]
-    paises = ["España", "México", "Colombia", "Argentina", "Chile", "Perú"]
+    paises = ["Espana", "Mexico", "Colombia", "Argentina", "Chile", "Peru"]
     anios = [2022, 2023, 2024]
     
     random.seed(123)
@@ -34,7 +34,6 @@ def main():
     )
 
     print("Generando datos de usuarios grandes para Schema Merging (20,000 filas en total)...")
-    # 2. Schema Merging (usuarios_a y usuarios_b)
     nombres_semilla = ["Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Heidi", "Ivan", "Judy"]
     
     # Parte A: id, nombre, email

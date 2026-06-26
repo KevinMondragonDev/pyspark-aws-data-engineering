@@ -7,12 +7,12 @@ def main():
     datos_dir = os.path.join(base_dir, "datos_retos")
     os.makedirs(datos_dir, exist_ok=True)
 
-    print("Generando dataset a gran escala para los retos (100,000 filas)...")
+    print("Generando dataset a gran escala ASCII-safe para los retos (100,000 filas)...")
     
-    # Listas de semillas para generar nombres aleatorios
-    nombres_semilla = ["Ana", "Luis", "Carla", "Pedro", "Sofía", "Jorge", "María", "Carlos", "Lucía", "Andrés", "Gabriela", "Felipe", "Elena", "Santiago", "Valeria", "Mateo"]
-    apellidos_semilla = ["Gómez", "Rodríguez", "López", "Martínez", "Pérez", "González", "Sánchez", "Ramírez", "Díaz", "Hernández", "Torres", "Flores", "Morales", "Castillo"]
-    departamentos = ["Ingeniería", "Marketing", "Ventas", "Finanzas", "Recursos Humanos", "Soporte"]
+    # Listas de semillas para generar nombres aleatorios sin acentos
+    nombres_semilla = ["Ana", "Luis", "Carla", "Pedro", "Sofia", "Jorge", "Maria", "Carlos", "Lucia", "Andres", "Gabriela", "Felipe", "Elena", "Santiago", "Valeria", "Mateo"]
+    apellidos_semilla = ["Gomez", "Rodriguez", "Lopez", "Martinez", "Perez", "Gonzalez", "Sanchez", "Ramirez", "Diaz", "Hernandez", "Torres", "Flores", "Morales", "Castillo"]
+    departamentos = ["Ingenieria", "Marketing", "Ventas", "Finanzas", "Recursos Humanos", "Soporte"]
 
     # Generamos 100,000 registros aleatorios
     random.seed(42)  # Semilla fija para consistencia
@@ -46,7 +46,7 @@ def main():
     )
     print(f"Creado particionado (100K filas) en: {path_reto5}")
 
-    print("¡Todos los archivos .parquet grandes para los retos han sido generados exitosamente!")
+    print("¡Todos los archivos .parquet grandes ASCII-safe para los retos han sido generados exitosamente!")
 
 if __name__ == "__main__":
     main()

@@ -5,16 +5,16 @@ from datetime import datetime, timedelta
 
 def main():
     base_spark_dir = os.path.dirname(os.path.abspath(__file__))
-    print("Iniciando la generación de Datasets en formato Parquet a gran escala para TODOS los módulos...")
+    print("Iniciando la generación de Datasets ASCII-safe en formato Parquet...")
 
     # Semilla fija para reproducibilidad
     random.seed(42)
 
-    # Nombres y departamentos semilla
-    nombres_semilla = ["Ana", "Luis", "Carla", "Pedro", "Sofía", "Jorge", "María", "Carlos", "Lucía", "Andrés", "Gabriela", "Felipe", "Elena", "Santiago", "Valeria", "Mateo", "Ricardo", "Diana", "Tomás", "Isabel"]
-    apellidos_semilla = ["Gómez", "Rodríguez", "López", "Martínez", "Pérez", "González", "Sánchez", "Ramírez", "Díaz", "Hernández", "Torres", "Flores", "Morales", "Castillo", "Vázquez", "García"]
-    departamentos = ["Ingeniería", "Marketing", "Ventas", "Finanzas", "Recursos Humanos", "Soporte"]
-    paises = ["México", "Colombia", "Argentina", "España", "Chile", "Perú"]
+    # Nombres y departamentos semilla (sin acentos ni caracteres especiales)
+    nombres_semilla = ["Ana", "Luis", "Carla", "Pedro", "Sofia", "Jorge", "Maria", "Carlos", "Lucia", "Andres", "Gabriela", "Felipe", "Elena", "Santiago", "Valeria", "Mateo", "Ricardo", "Diana", "Tomas", "Isabel"]
+    apellidos_semilla = ["Gomez", "Rodriguez", "Lopez", "Martinez", "Perez", "Gonzalez", "Sanchez", "Ramirez", "Diaz", "Hernandez", "Torres", "Flores", "Morales", "Castillo", "Vazquez", "Garcia"]
+    departamentos = ["Ingenieria", "Marketing", "Ventas", "Finanzas", "Recursos Humanos", "Soporte"]
+    paises = ["Mexico", "Colombia", "Argentina", "Espana", "Chile", "Peru"]
     trimestres = ["Q1", "Q2", "Q3", "Q4"]
     estados_venta = ["completado", "pendiente", "cancelado", None]
 
@@ -67,10 +67,8 @@ def main():
     dir_46 = os.path.join(base_spark_dir, "4.6.-joins", "datos")
     os.makedirs(dir_46, exist_ok=True)
     
-    # 100 departamentos posibles (con IDs del 100 al 199)
     dept_ids = list(range(100, 200))
-    # Generar departamentos
-    ciudades = ["CDMX", "Bogotá", "Buenos Aires", "Lima", "Santiago", "Madrid"]
+    ciudades = ["CDMX", "Bogota", "Buenos Aires", "Lima", "Santiago", "Madrid"]
     df_depts = pd.DataFrame([
         {
             "dept_id": d,
@@ -78,10 +76,8 @@ def main():
             "ciudad": random.choice(ciudades)
         } for d in dept_ids
     ])
-    # Agregar algunos deptos huérfanos no seleccionables
     df_depts.to_parquet(os.path.join(dir_46, "departamentos.parquet"), index=False)
 
-    # Generar 100k empleados, algunos con dept_id nulo o inexistente (ej. 999)
     df_emps_46 = pd.DataFrame([
         {
             "id": i,
@@ -111,9 +107,8 @@ def main():
     dir_48 = os.path.join(base_spark_dir, "4.8.-funciones-builtin", "datos")
     os.makedirs(dir_48, exist_ok=True)
     
-    # Usuarios (con espacios y diferentes mayúsculas/minúsculas)
     usr_rows = []
-    cargos = ["Ingeniería-Senior", "Marketing-Junior", "Ventas-Senior", "Finanzas-Analyst", "Soporte-Helper", "RRHH-Manager"]
+    cargos = ["Ingenieria-Senior", "Marketing-Junior", "Ventas-Senior", "Finanzas-Analyst", "Soporte-Helper", "RRHH-Manager"]
     for i in range(1, 100001):
         nombre_crudo = f"  {random.choice(nombres_semilla).lower()} {random.choice(apellidos_semilla).upper()}  "
         email = f"{random.choice(nombres_semilla)}.{random.choice(apellidos_semilla)}@empresa.com".replace(" ", "").lower()
@@ -121,13 +116,11 @@ def main():
         usr_rows.append({"nombre": nombre_crudo, "email": email, "cargo": cargo})
     pd.DataFrame(usr_rows).to_parquet(os.path.join(dir_48, "usuarios.parquet"), index=False)
 
-    # Fechas
-    start_date = datetime(2020, 1, 1)
     fechas_rows = []
     for _ in range(100000):
         random_days_start = random.randint(0, 1500)
         random_days_len = random.randint(1, 365)
-        fecha_ini = start_date + timedelta(days=random_days_start)
+        fecha_ini = start_date = datetime(2020, 1, 1) + timedelta(days=random_days_start)
         fecha_f = fecha_ini + timedelta(days=random_days_len)
         fechas_rows.append({
             "nombre": f"{random.choice(nombres_semilla)} {random.choice(apellidos_semilla)}",
@@ -159,9 +152,8 @@ def main():
     dir_411 = os.path.join(base_spark_dir, "4.11.-gran-integrador", "datos")
     os.makedirs(dir_411, exist_ok=True)
     
-    # 500 productos posibles
     prod_ids = list(range(1000, 1500))
-    prod_cats = ["Electrónica", "Periféricos", "Libros", "Muebles", "Ropa", "Deportes"]
+    prod_cats = ["Electronica", "Perifericos", "Libros", "Muebles", "Ropa", "Deportes"]
     df_prods_411 = pd.DataFrame([
         {
             "producto_id": p,
@@ -172,7 +164,6 @@ def main():
     ])
     df_prods_411.to_parquet(os.path.join(dir_411, "productos.parquet"), index=False)
 
-    # 100k ventas, con nulos e inconsistencias
     ventas_rows = []
     start_date_sales = datetime(2024, 1, 1)
     for i in range(1, 100001):
@@ -189,7 +180,7 @@ def main():
         })
     pd.DataFrame(ventas_rows).to_parquet(os.path.join(dir_411, "ventas.parquet"), index=False)
 
-    print("\n¡Proceso finalizado! Todos los módulos de Spark ahora cuentan con sus carpetas 'datos/' y archivos .parquet masivos.")
+    print("\n¡Proceso finalizado! Todos los módulos de Spark ahora cuentan con sus carpetas 'datos/' y archivos .parquet masivos y limpios.")
 
 if __name__ == "__main__":
     main()
