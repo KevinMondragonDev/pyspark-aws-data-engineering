@@ -6,6 +6,9 @@ Este repositorio contiene ejercicios, retos y proyectos prácticos enfocados en 
 
 El contenido está organizado de forma progresiva en los siguientes módulos:
 
+### 📁 01. Conceptos Básicos (`/01-basics`)
+Fundamentos introductorios de sintaxis y conceptos iniciales de Python.
+
 ### 📁 02. Estructuras de Datos y Control de Flujo (`/02-data-structures`)
 Fundamentos esenciales de Python aplicados a la manipulación de datos:
 *   **Tipos de datos y estructuras:** Listas, tuplas, diccionarios y sets.
